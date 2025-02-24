@@ -1,7 +1,7 @@
 ﻿using library.api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace library.api.Infraestructure
+namespace library.api.Infraestructure.DataAccess
 {
     public class LibraryDbContext : DbContext
     {
