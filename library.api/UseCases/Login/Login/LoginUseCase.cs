@@ -13,7 +13,9 @@ namespace library.api.UseCases.Login.Login
         {
             var dbContext = new LibraryDbContext();
 
-            var user = dbContext.Users.FirstOrDefault(user => user.Email.Equals(request.Email)) ?? throw new InvalidLoginException();
+            var user = dbContext.Users
+                .FirstOrDefault(user => user.Email.Equals(request.Email)) ??
+                throw new InvalidLoginException();
 
             var cryptography = new BCryptAlgorithm();
 

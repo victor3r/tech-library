@@ -2,7 +2,7 @@
 
 namespace library.exception
 {
-    public class ErrorOnValidationException(List<string> errorMessages) : LibraryException
+    public class ErrorOnValidationException(List<string> errorMessages) : LibraryException(string.Empty)
     {
 
         private readonly List<string> _errors = errorMessages;

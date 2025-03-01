@@ -18,7 +18,9 @@ namespace library.api.Infraestructure.Security.Tokens.Access
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(SecurityKey(), SecurityAlgorithms.HmacSha256Signature),
+                SigningCredentials = new SigningCredentials(
+                    SecurityKey(),
+                    SecurityAlgorithms.HmacSha256Signature),
                 Subject = new ClaimsIdentity(claims)
             };
 
@@ -29,7 +31,7 @@ namespace library.api.Infraestructure.Security.Tokens.Access
             return tokenHandler.WriteToken(securityToken);
         }
 
-        private SymmetricSecurityKey SecurityKey()
+        public static SymmetricSecurityKey SecurityKey()
         {
 
             var signingKey = "N-Q5Vg0rWxHI4vIM9K-8VDbRRS0O8;n<";

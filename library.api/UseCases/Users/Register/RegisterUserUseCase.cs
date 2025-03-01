@@ -44,16 +44,20 @@ namespace library.api.UseCases.Users.Register
 
             var result = validator.Validate(request);
 
-            var existUserWithEmail = dbContext.Users.Any(user => user.Email.Equals(request.Email));
+            var existUserWithEmail = dbContext.Users
+                .Any(user => user.Email.Equals(request.Email));
 
             if (existUserWithEmail)
             {
-                result.Errors.Add(new ValidationFailure("Email", "Email already registered"));
+                result.Errors.Add(
+                    new ValidationFailure("Email", "Email already registered"));
             }
 
             if (!result.IsValid)
             {
-                var errorMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
+                var errorMessages = result.Errors
+                    .Select(error => error.ErrorMessage)
+                    .ToList();
 
                 throw new ErrorOnValidationException(errorMessages);
             }
